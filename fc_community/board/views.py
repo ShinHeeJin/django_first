@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.core.paginator import Paginator
 from django.http import Http404
+from tag.models import Tag
 from .models import Board
 from .forms import BoardForm
 from fcuser.models import Fcuser
@@ -25,11 +26,21 @@ def board_write(request):
             user_id = request.session.get('user')
             fcuser = Fcuser.objects.get(pk=user_id)
 
+            tags = form.cleaned_data['tags'].strip().split(',')
+
+            # board 저장후 tag 추가 가능 
             board = Board()
             board.title = form.cleaned_data['title']
             board.contents = form.cleaned_data['contents']
             board.writer = fcuser
             board.save()
+
+            for tag in tags:
+                if not tag:
+                    continue
+                
+                _tag, created = Tag.objects.get_or_create(name=tag) # created(boolean)
+                board.tags.add(_tag) # 추가
 
             return redirect('/board/list/')
     else:
