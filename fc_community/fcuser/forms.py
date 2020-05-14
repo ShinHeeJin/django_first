@@ -26,7 +26,7 @@ class LoginForm(forms.Form):
             # 비밀번호가 틀렸을때
             if not check_password(password, fcuser.password):
                 self.add_error('password', '비밀번호가 틀렸습니다.')
-            
+
             # 비밀번호가 맞았을때
             else:
                 self.user_id = fcuser.id
