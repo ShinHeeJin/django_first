@@ -25,12 +25,12 @@ def login(request):
     if request.method == 'POST':
         form = LoginForm(request.POST)
 
-        if form.is_valid(): # 검증
-            # session
+        if form.is_valid(): # 검증(clean)
+            request.session['user'] = form.user_id # 변수존재!
             return redirect('/')
     else:
         form = LoginForm()
-        
+
     return render(request, 'login.html', {'form':form})
 
 
