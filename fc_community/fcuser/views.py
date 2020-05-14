@@ -17,7 +17,7 @@ def home(request):
 
 def logout(request):
     if request.session.get("user"):
-        del(request.session['user'])
+        del(request.session['user']) # 메모리에서 지우기
 
     return redirect('/')
 
