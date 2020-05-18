@@ -23,9 +23,16 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '(-h^*aauev0bd)(@ib(@+7!g(re21r1j^03oeowty5t_tv@p4z'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = [
+#     'elwlslfkrh.pythonanywhere.com' 파이썬 애니웨어 아이디
+# ]
+# ALLOWED_HOSTS = [
+#     '*'
+# ]
+ALLOWED_HOSTS = [] # 호스팅 주소를 넣어주어야 합니다.
 
 
 # Application definition
@@ -121,6 +128,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
-]
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, 'static'), # 모두 수집후 한디렉토리안에 적용!
+# ]
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')

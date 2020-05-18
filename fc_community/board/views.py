@@ -36,7 +36,7 @@ def board_write(request):
             board.save()
 
             for tag in tags:
-                if not tag:
+                if not tag: # 빈 문자열 일수도 있기 때문 not ""
                     continue
                 
                 _tag, created = Tag.objects.get_or_create(name=tag) # created(boolean)
